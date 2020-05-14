@@ -48,8 +48,13 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // PUT: api/Quotes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Quote quote)
         {
+          var entity =  _quotesDbContext.Quotes.Find(id);
+            entity.Title = quote.Title;
+            entity.Author = quote.Author;
+            entity.Description = quote.Description;
+            _quotesDbContext.SaveChanges();
         }
 
         // DELETE: api/ApiWithActions/5
