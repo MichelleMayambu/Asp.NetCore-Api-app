@@ -52,5 +52,12 @@ namespace Asp.NetCore_Api_app.Controllers
         {
             _quotes[id] = quote;
         }
+
+        //delete
+        [HttpDelete("{id}")]
+        public void Delete( int id)
+        {
+            _quotes.RemoveAt(id);
+        }
     }
 }
