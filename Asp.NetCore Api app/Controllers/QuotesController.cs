@@ -42,8 +42,15 @@ namespace Asp.NetCore_Api_app.Controllers
         //post objet to list of quotes
         [HttpPost]
         public void Post([FromBody] Quote quote)
-            {
+        {
             _quotes.Add(quote);
+        }
+
+        //update object list quotes
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Quote quote)
+        {
+            _quotes[id] = quote;
         }
     }
 }
