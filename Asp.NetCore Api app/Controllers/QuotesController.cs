@@ -30,16 +30,20 @@ namespace Asp.NetCore_Api_app.Controllers
         }
 
         // GET: api/Quotes/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public Quote Get(int id)
         {
-            return "value";
+           var quote = _quotesDbContext.Quotes.Find(id);
+            return quote;
         }
 
         // POST: api/Quotes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Quote quote)
         {
+            _quotesDbContext.Quotes.Add(quote);
+            //call to save changes in the database
+            _quotesDbContext.SaveChanges();
         }
 
         // PUT: api/Quotes/5
