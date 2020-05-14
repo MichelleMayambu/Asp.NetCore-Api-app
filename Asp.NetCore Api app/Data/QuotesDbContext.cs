@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Asp.NetCore_Api_app.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +9,6 @@ namespace Asp.NetCore_Api_app.Data
 {
     public class QuotesDbContext : DbContext
     {
+        public DbSet<Quote> Quotes { get; set; }
     }
 }
