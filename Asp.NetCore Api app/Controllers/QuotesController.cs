@@ -12,7 +12,7 @@ namespace Asp.NetCore_Api_app.Controllers
     [ApiController]
     public class QuotesController : ControllerBase
     {
-        List<Quote> _quotes = new List<Quote>()
+        static List<Quote> _quotes = new List<Quote>()
         {
         new Quote()
         {
@@ -37,6 +37,13 @@ namespace Asp.NetCore_Api_app.Controllers
         public IEnumerable<Quote> Get()
         {
             return _quotes;
+        }
+
+        //post objet to list of quotes
+        [HttpPost]
+        public void Post([FromBody] Quote quote)
+            {
+            _quotes.Add(quote);
         }
     }
 }
