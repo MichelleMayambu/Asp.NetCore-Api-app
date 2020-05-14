@@ -61,6 +61,9 @@ namespace Asp.NetCore_Api_app.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+          var quote = _quotesDbContext.Quotes.Find(id);
+            _quotesDbContext.Quotes.Remove(quote);
+           
         }
     }
 }
