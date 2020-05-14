@@ -13,8 +13,14 @@ namespace Asp.NetCore_Api_app.Controllers
     [ApiController]
     public class QuotesController : ControllerBase
     {
-        //get quotes from dataBase create instance of quotes db context class
-        private QuotesDbContext _quotesDbContext = new QuotesDbContext();
+        //get dbContext
+        private QuotesDbContext _quotesDbContext;
+
+        //dbcontext constructor
+        public QuotesController(QuotesDbContext quotesDbContext)
+        {
+            _quotesDbContext = quotesDbContext;
+        }
 
         // GET: api/Quotes
         [HttpGet]
