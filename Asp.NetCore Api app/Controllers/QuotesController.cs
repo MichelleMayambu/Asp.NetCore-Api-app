@@ -62,7 +62,7 @@ namespace Asp.NetCore_Api_app.Controllers
             entity.Author = quote.Author;
             entity.Description = quote.Description;
             _quotesDbContext.SaveChanges();
-            return Ok();
+            return Ok("Record updated successfully");
         }
 
         // DELETE: api/ApiWithActions/5
