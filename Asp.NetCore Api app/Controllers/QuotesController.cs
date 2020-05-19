@@ -61,13 +61,17 @@ namespace Asp.NetCore_Api_app.Controllers
             //if  id vaue is not found in the database
              if (entity == null)
             {
-                return NotFound();
+                return NotFound("No record found);
             }
-            entity.Title = quote.Title;
-            entity.Author = quote.Author;
-            entity.Description = quote.Description;
-            _quotesDbContext.SaveChanges();
-            return Ok("Record updated successfully");
+            else
+            {
+                entity.Title = quote.Title;
+                entity.Author = quote.Author;
+                entity.Description = quote.Description;
+                _quotesDbContext.SaveChanges();
+                return Ok("Record updated successfully");
+            }
+        
         }
 
         // DELETE: api/ApiWithActions/5
