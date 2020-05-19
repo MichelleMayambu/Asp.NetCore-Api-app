@@ -37,10 +37,18 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // GET: api/Quotes/5
         [HttpGet("{id}")]
-        public Quote Get(int id)
+        public IActionResult Get(int id)
         {
            var quote = _quotesDbContext.Quotes.Find(id);
-            return quote;
+            if(quote == null)
+            {
+                return NotFound("record not found");
+            }
+            else
+            {
+                return Ok(quote);
+            }
+       
         }
 
         // POST: api/Quotes
