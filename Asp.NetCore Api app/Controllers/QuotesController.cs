@@ -58,6 +58,11 @@ namespace Asp.NetCore_Api_app.Controllers
         public IActionResult Put(int id, [FromBody] Quote quote)
         {
           var entity =  _quotesDbContext.Quotes.Find(id);
+            //if  id vaue is not found in the database
+             if (entity == null)
+            {
+                return NotFound();
+            }
             entity.Title = quote.Title;
             entity.Author = quote.Author;
             entity.Description = quote.Description;
