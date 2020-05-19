@@ -61,7 +61,7 @@ namespace Asp.NetCore_Api_app.Controllers
             //if  id vaue is not found in the database
              if (entity == null)
             {
-                return NotFound("No record found);
+                return NotFound("No record found");
             }
             else
             {
@@ -76,11 +76,21 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
           var quote = _quotesDbContext.Quotes.Find(id);
-            _quotesDbContext.Quotes.Remove(quote);
-           
+            if (quote == null)
+            {
+                return NotFound("No record found.....");
+            }
+            else
+            {
+                _quotesDbContext.Quotes.Remove(quote);
+                _quotesDbContext.SaveChanges();
+                return Ok("Record has been deleted....");
+            }
+            
         }
+        
     }
 }
