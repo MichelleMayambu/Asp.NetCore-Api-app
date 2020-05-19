@@ -45,11 +45,12 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // POST: api/Quotes
         [HttpPost]
-        public void Post([FromBody] Quote quote)
+        public IActionResult Post([FromBody] Quote quote)
         {
             _quotesDbContext.Quotes.Add(quote);
             //call to save changes in the database
             _quotesDbContext.SaveChanges();
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         // PUT: api/Quotes/5
