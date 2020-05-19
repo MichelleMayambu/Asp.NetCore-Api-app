@@ -22,11 +22,17 @@ namespace Asp.NetCore_Api_app.Controllers
             _quotesDbContext = quotesDbContext;
         }
 
-        // GET: api/Quotes
+        // GET: api/Quotes //with status code
         [HttpGet]
-        public IEnumerable<Quote> Get()
+        public IActionResult Get()
         {
-            return _quotesDbContext.Quotes;
+            return Ok(_quotesDbContext.Quotes); //status code 200 with data
+            //  return NotFound() 404
+            //better method to use , define which status code you want to return
+           // return StatusCode(200); 
+           // return StatusCode(402); 
+           // exerllent method to Automatically generate a status code using the StatusCode CLASS
+          // return StatusCode(StatusCodes.Status200OK);
         }
 
         // GET: api/Quotes/5
