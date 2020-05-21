@@ -32,6 +32,8 @@ namespace Asp.NetCore_Api_app
             //register database context service with dependency injection
             services.AddDbContext<QuotesDbContext>(op => op.UseSqlServer(Configuration.GetConnectionString("Database")));
 
+            //add caching service
+            services.AddResponseCaching();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,7 @@ namespace Asp.NetCore_Api_app
             }
 
             app.UseHttpsRedirection();
+            app.UseResponseCaching();
             app.UseMvc();
         }
     }
