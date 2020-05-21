@@ -24,7 +24,8 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // GET: api/Quotes //with status code
         [HttpGet]
-        [ResponseCache(Duration = 60)]
+        //best practice so that all clients will get lates deta from server
+        [ResponseCache(Duration = 60, Location=ResponseCacheLocation.Client )]
         public IActionResult Get()
         {
             return Ok(_quotesDbContext.Quotes);
