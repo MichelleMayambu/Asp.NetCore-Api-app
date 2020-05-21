@@ -24,7 +24,7 @@ namespace Asp.NetCore_Api_app.Controllers
 
         // GET: api/Quotes //with status code
         [HttpGet]
-        [ResponseCache()]
+        [ResponseCache(Duration = 60)]
         public IActionResult Get()
         {
             return Ok(_quotesDbContext.Quotes);
