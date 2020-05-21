@@ -26,13 +26,7 @@ namespace Asp.NetCore_Api_app.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_quotesDbContext.Quotes); //status code 200 with data
-            //  return NotFound() 404
-            //better method to use , define which status code you want to return
-           // return StatusCode(200); 
-           // return StatusCode(402); 
-           // exerllent method to Automatically generate a status code using the StatusCode CLASS
-          // return StatusCode(StatusCodes.Status200OK);
+            return Ok(_quotesDbContext.Quotes);
         }
 
         // GET: api/Quotes/5
@@ -49,6 +43,14 @@ namespace Asp.NetCore_Api_app.Controllers
                 return Ok(quote);
             }
        
+        }
+
+        //attribute routing the get() request
+        //api/quotes/Test/1
+        [HttpGet("[action]/{id}")]
+        public int Test (int id)
+        {
+            return id;
         }
 
         // POST: api/Quotes
